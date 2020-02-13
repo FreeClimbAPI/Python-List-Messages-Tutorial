@@ -20,7 +20,7 @@ file = open("message_results.txt", "w")
 file.write(str(first_message.messages))
 
 while(next_page_uri != None):
-    next_message = requests.get(url="https://www.freeclimb.com/apiserver" + next_page_uri, auth=(configuration.username, configuration.password))
+    next_message = requests.get(url=configuration.host + next_page_uri, auth=(configuration.username, configuration.password))
     file.write('\n')
     file.write(str(next_message.json().get('messages')))
     next_page_uri = next_message.json().get('next_page_uri')
