@@ -19,8 +19,6 @@ next_page_uri = first_message.next_page_uri
 file = open("message_results.txt", "w")
 file.write(str(first_message.messages))
 
-# second_message = requests.get(url="https://www.freeclimb.com/apiserver" + next_page_uri, auth=(configuration.username, configuration.password))
-
 while(next_page_uri != None):
     next_message = requests.get(url="https://www.freeclimb.com/apiserver" + next_page_uri, auth=(configuration.username, configuration.password))
     file.write('\n')
