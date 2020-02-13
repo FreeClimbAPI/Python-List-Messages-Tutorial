@@ -1,7 +1,6 @@
-from __future__ import print_function
-import time
 import freeclimb
 import os
+import requests
 
 configuration = freeclimb.Configuration()
 # Configure HTTP basic authorization: fc
@@ -13,6 +12,19 @@ configuration.host = "https://www.freeclimb.com/apiserver"
 # Create an instance of the API class
 api_instance = freeclimb.DefaultApi(freeclimb.ApiClient(configuration))
 
-message_list = api_instance.list_sms_messages(configuration.username)
+first_message = api_instance.list_sms_messages(configuration.username)
 
-print(message_list)
+next_page_uri = first_message.next_page_uri
+
+file = open("message_results.txt", "w")
+file.write(str(first_message.messages))
+
+# second_message = requests.get(url="https://www.freeclimb.com/apiserver" + next_page_uri, auth=(configuration.username, configuration.password))
+
+while(next_page_uri != None):
+    next_message = requests.get(url="https://www.freeclimb.com/apiserver" + next_page_uri, auth=(configuration.username, configuration.password))
+    file.write('\n')
+    file.write(str(next_message.json().get('messages')))
+    next_page_uri = next_message.json().get('next_page_uri')
+
+file.close()
