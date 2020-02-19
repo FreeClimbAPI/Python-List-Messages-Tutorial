@@ -28,5 +28,5 @@ To get started using a FreeClimb account, follow the instructions [here](https:/
 ## Running the Tutorial
 
 ```bash
-env FLASK_APP=python_list_messages_tutorial.py flask run
+python python_list_messages_tutorial.py
 ```

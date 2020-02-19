@@ -12,7 +12,7 @@ configuration.host = "https://www.freeclimb.com/apiserver"
 # Create an instance of the API class
 api_instance = freeclimb.DefaultApi(freeclimb.ApiClient(configuration))
 
-first_message = api_instance.list_sms_messages(configuration.username)
+first_message = api_instance.list_sms_messages()
 
 next_page_uri = first_message.next_page_uri
 
