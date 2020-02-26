@@ -10,7 +10,7 @@ To get started using a FreeClimb account, follow the instructions [here](https:/
 
 ## Setting up the Tutorial
 
-1. Make sure you have Python 2.5.0 or later
+1. Make sure you have Python 3.5.0 or later
 
 2. Install the required packages
 
