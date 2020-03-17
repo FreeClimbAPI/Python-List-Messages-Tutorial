@@ -1,6 +1,7 @@
 import freeclimb
 import os
 import requests
+import json
 
 configuration = freeclimb.Configuration()
 # Configure HTTP basic authorization: fc
@@ -16,13 +17,14 @@ first_message = api_instance.list_sms_messages()
 
 next_page_uri = first_message.next_page_uri
 
-file = open("message_results.txt", "w")
-file.write(str(first_message.messages))
-
+all_messages = []
+all_messages.extend(map(lambda x: x.to_dict(), first_message.messages))
 while(next_page_uri != None):
-    next_message = requests.get(url=configuration.host + next_page_uri, auth=(configuration.username, configuration.password))
-    file.write('\n')
-    file.write(str(next_message.json().get('messages')))
+    next_message = requests.get(url=configuration.host + next_page_uri,
+                                auth=(configuration.username, configuration.password))
+    all_messages.extend(next_message.json().get('messages'))
     next_page_uri = next_message.json().get('next_page_uri')
 
+file = open("message_results.json", "w")
+file.write(json.dumps(all_messages))
 file.close()

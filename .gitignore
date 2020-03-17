@@ -65,3 +65,4 @@ target/
 
 .DS_Store
 freeclimb/.DS_Store
+message_results.json
