@@ -1,2 +1,2 @@
 requests >= 2.22.0
-freeclimb >= 1.0.1
+freeclimb >= 2.0.0
