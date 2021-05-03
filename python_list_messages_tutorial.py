@@ -6,7 +6,7 @@ import json
 configuration = freeclimb.Configuration()
 # Configure HTTP basic authorization: fc
 configuration.username = os.environ['ACCOUNT_ID']
-configuration.password = os.environ['AUTH_TOKEN']
+configuration.password = os.environ['API_KEY']
 
 # Defining host is optional and default to https://www.freeclimb.com/apiserver
 configuration.host = "https://www.freeclimb.com/apiserver"
