@@ -28,7 +28,7 @@ To get started using a FreeClimb account, follow the instructions [here](https:/
 ## Running the Tutorial
 
 ```bash
-python python_list_messages_tutorial.py
+python3 python_list_messages_tutorial.py
 ```
 
 ## Getting Help
